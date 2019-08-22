@@ -38,6 +38,16 @@ foreach($suits as $suit) {
     }
 }
 
+$player_subscore;
+$dealer_subscore;
+
+$player_score;
+$dealer_score;
+
+$player_hand = [];
+$dealer_hand = [];
+
+$rand_card;
 
 # BLACKJACK PLAYERS
 
@@ -45,9 +55,21 @@ foreach($suits as $suit) {
 class Blackjack {
     
     public function hit() {
-        echo "new cards please";
+        // echo "new cards please";
         global $deck;
         
+        // pick a random value out of the array $deck
+        global $rand_card;
+        $rand_card = array_rand($deck); // Pulls a random card
+        echo $rand_card . "<br>"; // Gives the name of the card
+        echo $deck[$rand_card]. "<br>"; // Gives the value
+
+        $hand = [];
+
+        $this->hand;
+
+        $score = 0;
+        $this->$score;
     }
 
     public function stand() {
@@ -60,9 +82,24 @@ class Blackjack {
 
 }
 
-$player1 = new Blackjack;
+$player = new Blackjack;
 $dealer = new Blackjack;
 
-echo $player1->hit();
+// print_r($deck); 
+// echo $deck['club A'];
 
+$test = new Blackjack;
+$test ->hit();
+$test -> $hand[] = $rand_card;
+print_r($test -> $hand);
+echo "<br>";
+$test -> hit();
+$test -> $hand[] = $rand_card;
+print_r($test -> $hand);
+echo "<br>";
+
+$dealer ->hit();
+$dealer -> $hand[] = $rand_card;
+print_r($dealer -> $hand);
 ?>
+
