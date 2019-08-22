@@ -1,21 +1,23 @@
 <?php 
 
 # dubbele variable van Carolien!
-$player_wins = 3; //in object
-$dealer_wins = 0; //in object
+$player_wins = 3; // global
+$dealer_wins = 0; // global
 
-$player_score = 21; //in object
-$dealer_score = 0;//in object 
+$player_score = 21; // global
+$dealer_score = 0; // global
 
-$player_subscore = 0; //in object
-$dealer_subscore = 0; //in object
+$player_subscore = 0; // global
+$dealer_subscore = 0; // global
 
-$player_hand = []; //in object
-$dealer_hand = []; //in boject
+$player_hand = []; // global
+$dealer_hand = []; // global
 
-$game_log = [];
+$game_log = []; // global
 
 
+############################
+# TEST
 echo $player_wins . "<br>";
 echo $player_score . "<br>";
 print_r($game_log);
@@ -43,7 +45,7 @@ function new_game() {
     reset_scores();
 
     // Reset winning scores to 0
-    global $player_wins;
+    $player -> $player_wins;
     global $dealer_wins;
     $player_wins = 0;
     $dealer_wins = 0;
