@@ -5,11 +5,7 @@
     <title>Blackjack</title>
   </head>
   <body>
-  <?php 
-  include '/gamelogic/blackjack.php';
-  include '/gamelogic/Mago-PlayGame.php';
-  ?>
-
+  <?php include 'gamelogic/blackjack.php'; ?>
 
 
     <form action="" method="GET">
@@ -20,24 +16,32 @@
 
     <p>
 
+    <?php action_btn(); ?>
+    
+    </p>
+
+    
+
     <?php
-
-    action_btn();
-
     // Actieknoppen
 
 function action_btn() {
+    
+    global $player;
 
     if (isset($_GET["hitTest"]))
     {
-      echo "Player chose hit!";
+        
+        $player->hit();
+        echo $player->totalscore;
+    
       
-    }
+    };
   
     if (isset ($_GET["standTest"]))
     {
       echo "Player chose stand!";
-    }
+    };
   
     if (isset ($_GET["surrenderTest"]))
     {
@@ -46,9 +50,15 @@ function action_btn() {
   }
 
 
+
+
+
+
+
+  
+
+
 ?>
-        
-    </p>
 
         
 </body>
