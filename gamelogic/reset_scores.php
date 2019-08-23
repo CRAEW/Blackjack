@@ -1,28 +1,4 @@
 <?php 
-include 'blackjack.php'; 
-
-print_r($suits);
-echo "<br>";
-
-?>
-
-<?php 
-
-# dubbele variable van Carolien!
-$player_wins = 3; // global
-$dealer_wins = 0; // global
-
-$player_score = 21; // global
-$dealer_score = 0; // global
-
-$player_subscore = 0; // global
-$dealer_subscore = 0; // global
-
-$player_hand = []; // global
-$dealer_hand = []; // global
-
-$game_log = []; // global
-
 
 ############################
 # TEST
