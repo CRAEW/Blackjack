@@ -1,9 +1,12 @@
 <?php 
 
-include 'variables.php';
 include 'carddeck.php';
 include 'reset_scores.php';
+include 'start_game.php';
 
+$rand_card; // global
+$game_log = []; // global
+$active_player = 0;
 
 // Constructor to create the players
 class Blackjack {
@@ -23,10 +26,10 @@ class Blackjack {
         $rand_value =  $deck[$rand_card]; // Gives the value
 
         // push card into hand array player
-        $this -> hand[] = $rand_card;
+        $this->hand[] = $rand_card;
 
         // push value card into score array player
-        $this -> score[] = $rand_value;
+        $this->score[] = $rand_value;
 
         // adds the score to player totalscore
         add_score($this);
@@ -35,7 +38,7 @@ class Blackjack {
 
     public function stand() {
         echo "no card for me, I skip this one";
-        $person -> totalscore = $person -> totalscore;
+        $person->totalscore = $person->totalscore;
         //function endturn()
     }
 
@@ -48,14 +51,14 @@ class Blackjack {
 
 // function to add the score to the players totalscore
 function add_score($person) {
-    $person -> score;
-    $person -> totalscore = 0;
+    $person->score;
+    $person->totalscore = 0;
 
-    foreach($person -> score as $score_value) {
-        $person -> totalscore += $score_value;
+    foreach($person->score as $score_value) {
+        $person->totalscore += $score_value;
     }
 
-    switch ($x = $person -> totalscore) {
+    switch ($x = $person->totalscore) {
         case $x > 21:
 
         break;
@@ -65,40 +68,12 @@ function add_score($person) {
     // function endturn()
 }
 
-$player = new Blackjack;
+ // Create the 2 player objects
+ $player = new Blackjack;
+ $dealer = new Blackjack;
 
-// $player -> hit();
-// print_r($player -> hand);
-// echo "<br>";
-// print_r($player -> score);
-// echo "<br>";
-// echo $player -> totalscore;
-// echo "<br>";
-// echo "<br>";
+ start_game();
 
-// $player -> hit();
-// print_r($player -> hand);
-// echo "<br>";
-// print_r($player -> score);
-// echo "<br>";
-// echo $player -> totalscore;
-// echo "<br>";
-// echo "<br>";
-
-// $dealer -> hit();
-// print_r($dealer -> hand);
-// echo "<br>";
-// print_r($dealer -> score);
-
-
-// $dealer ->hit();
-// $dealer ->hit();
-// $dealer ->hit();
-
-// echo "<br>";
-
-// add_score();
-// echo $dealer -> $totalscore;
 
 
 

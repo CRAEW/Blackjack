@@ -9,14 +9,24 @@
 
 
     <form action="" method="GET">
-        <input type="submit" value="Hit" name="hitTest">
-        <input type="submit" value="Stand" name="standTest">
-        <input type="submit" value="Surrender" name="surrenderTest">
+        <input type="submit" value="Hit" name="hit">
+        <input type="submit" value="stand" name="stand">
+        <input type="submit" value="surrender" name="surrender">
     </form>
 
     <p>
 
-    <?php action_btn(); ?>
+    <?php 
+
+        echo "Player totalscore: $player->totalscore";
+        echo "<br>";
+
+        echo "Dealer totalscore: $dealer->totalscore";
+        echo "<br>";
+    
+        action_btn(); 
+        
+    ?>
     
     </p>
 
@@ -28,34 +38,34 @@
 function action_btn() {
     
     global $player;
+    global $dealer;
+    global $active_player;
 
-    if (isset($_GET["hitTest"]))
+    if (isset($_GET["hit"]))
     {
         
         $player->hit();
-        echo $player->totalscore;
+        echo "Player totalscore: $player->totalscore";
+        echo "<br>";
+        // echo "Dealer totalscore: $dealer->totalscore";
     
       
     };
   
-    if (isset ($_GET["standTest"]))
+    if (isset ($_GET["stand"]))
     {
       echo "Player chose stand!";
+
+    // active_playere = 1
+
+
     };
   
-    if (isset ($_GET["surrenderTest"]))
+    if (isset ($_GET["surrender"]))
     {
       echo "Player chose to surrender!";
     }
   }
-
-
-
-
-
-
-
-  
 
 
 ?>

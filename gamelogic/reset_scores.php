@@ -1,30 +1,5 @@
 <?php 
 
-############################
-# TEST
-echo $player_wins . "<br>";
-echo $player_score . "<br>";
-print_r($game_log);
-echo "<br>";
-
-new_round();
-
-echo $player_wins . "<br>";
-echo $player_score . "<br>";
-print_r($game_log);
-echo "<br>";
-
-new_game();
-echo $player_wins . "<br>";
-echo $player_score . "<br>";
-print_r($game_log);
-echo "<br>";
-
-###########################
-
-
-
-
 // Set all back to default
 function new_game() {
     reset_scores();
@@ -65,8 +40,5 @@ function reset_scores() {
     $player_hand = [];
     $dealer_hand = [];
 }
-
-
-$player -> $hand[] = $randcard;
 
 ?>
