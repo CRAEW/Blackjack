@@ -33,7 +33,7 @@ class Blackjack {
         print_r($this -> $score);
 
         global $totalscore;
-        $person -> totalscore;
+        $this -> totalscore;
 
         $this -> add_score();
 
