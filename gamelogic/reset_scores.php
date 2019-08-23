@@ -1,4 +1,12 @@
 <?php 
+include 'blackjack.php'; 
+
+print_r($suits);
+echo "<br>";
+
+?>
+
+<?php 
 
 # dubbele variable van Carolien!
 $player_wins = 3; // global
@@ -40,12 +48,13 @@ echo "<br>";
 
 
 
+
 // Set all back to default
 function new_game() {
     reset_scores();
 
     // Reset winning scores to 0
-    $player -> $player_wins;
+    // $player -> $player_wins;
     global $dealer_wins;
     $player_wins = 0;
     $dealer_wins = 0;
@@ -62,7 +71,7 @@ function new_round() {
 
     global $game_log;
     $game_log[] = "New round started.";
-    global $player -> $game_log[] = "New round started.";
+    // global $player -> $game_log[] = "New round started.";
 }
 
 function reset_scores() {
