@@ -1,76 +1,55 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Blackjack</title>
-  </head>
-  <body>
-  <?php include 'gamelogic/blackjack.php'; ?>
+<?php
+    if(isset($_GET['start'])){
 
-
-    <form action="" method="GET">
-        <input type="submit" value="Hit" name="hit">
-        <input type="submit" value="stand" name="stand">
-        <input type="submit" value="surrender" name="surrender">
-    </form>
-
-    <p>
-
-    <?php 
-
-        echo "Player totalscore: $player->totalscore";
-        echo "<br>";
-
-        echo "Dealer totalscore: $dealer->totalscore";
-        echo "<br>";
-    
-        action_btn(); 
-        
-    ?>
-    
-    </p>
-
-    
-
-    <?php
-    // Actieknoppen
-
-function action_btn() {
-    
-    global $player;
-    global $dealer;
-    global $active_player;
-
-    if (isset($_GET["hit"]))
-    {
-        
-        $player->hit();
-        echo "Player totalscore: $player->totalscore";
-        echo "<br>";
-        // echo "Dealer totalscore: $dealer->totalscore";
-    
-      
-    };
-  
-    if (isset ($_GET["stand"]))
-    {
-      echo "Player chose stand!";
-
-    // active_playere = 1
-
-
-    };
-  
-    if (isset ($_GET["surrender"]))
-    {
-      echo "Player chose to surrender!";
+        header('Location: game.php');
     }
-  }
-
-
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Blackjack - Start</title>
 
-        
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Acme&display=swap');
+    body {
+      background-image: url('images/casino.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      color: white;
+      font-family: 'Acme', sans-serif;
+      line-height: 1;
+    }
+    #startform {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-size: 50px;
+    }
+    input {
+      width: 300px;
+      height: 40px;
+      font-size: 30px;
+      color: white;
+      font-family: 'Acme', sans-serif;
+      font-weight: lighter;
+      background-color: #ba2d40;
+      border-radius: 0.7rem;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <form id="startform" action="" method="GET">
+    <label for="submit">Are you ready to take your chance?</label> <br>
+    <input type="submit" id="submit" name="start" value="Yes, I am!">
+</form>
 </body>
-
 </html>

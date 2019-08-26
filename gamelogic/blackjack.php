@@ -8,15 +8,48 @@ $rand_card; // global
 $game_log = []; // global
 $active_player = 0;
 
+// Actieknoppen
+function action_btn() {
+    
+    global $player;
+    global $dealer;
+    global $active_player;
+
+    if (isset($_GET["hit"]))
+    {
+        
+        $player->hit();
+        print_r($player->hand);
+        echo "Player totalscore 1: $player->totalscore";
+        echo "<br>";
+        // echo "Dealer totalscore: $dealer->totalscore";
+    
+      
+    };
+  
+    if (isset ($_GET["stand"]))
+    {
+      echo "Player chose stand!";
+
+    // active_playere = 1
+
+
+    };
+  
+    if (isset ($_GET["surrender"]))
+    {
+      session_destroy();
+    }
+  }
+
 // Constructor to create the players
 class Blackjack {
     public $wins;
-    public $score = [];
+    public $score = array();
     public $totalscore;
-    public $hand = [];
-
-
-    public function hit() {
+    public $hand = array();
+    
+    function hit() {
         // echo "new cards please";
         global $deck;
         
@@ -38,7 +71,7 @@ class Blackjack {
 
     public function stand() {
         echo "no card for me, I skip this one";
-        $person->totalscore = $person->totalscore;
+
         //function endturn()
     }
 
@@ -68,11 +101,9 @@ function add_score($person) {
     // function endturn()
 }
 
- // Create the 2 player objects
- $player = new Blackjack;
- $dealer = new Blackjack;
+ 
 
- start_game();
+ 
 
 
 
