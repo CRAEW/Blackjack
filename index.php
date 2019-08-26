@@ -23,9 +23,9 @@
       padding: 0;
       color: white;
       font-family: 'Acme', sans-serif;
-      line-height: 1;
+      line-height: 2;
     }
-    #startform {
+    form {
       display: flex;
       flex-direction: column;
       justify-content: center;

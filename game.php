@@ -12,14 +12,35 @@ $player->score = $_SESSION['playerscore'];
 $dealer->hand = $_SESSION['dealerhand'];
 $dealer->score = $_SESSION['dealerscore'];
 
-if(!isset($_SESSION['playerhand'])) {
-  start_game();
-}
+// $active_player = $_SESSION['activeplayer'];
+// $_SESSION['activeplayer'] = $active_player;
+echo $active_player;
+echo "<br>";
 
-if(isset($_GET["hit"])){      
-  $player->hit();
-  print_r($player->hand);
-  echo "<br>";
+if((!isset($_SESSION['playerhand'])) AND (!isset($_SESSION['dealerhand']))){
+  start_game();
+};
+
+
+if(isset($_GET["hit"])){
+  $active_player = $_SESSION['activeplayer'];
+  $_SESSION['activeplayer'] = $active_player;
+  if($active_player === 0){
+    $player->hit();
+    $dealer->add_score();
+  };
+  if ($active_player === 1) {
+    $dealer->hit();
+    $player->add_score();
+  }
+};
+
+if (isset ($_GET["stand"])){
+      echo "Player chose stand!";
+
+    $active_player = 1; // start dealer turn
+    $_SESSION['activeplayer'] = $active_player;
+    echo $active_player;  
 };
 
 if (isset($_GET["surrender"])){
@@ -32,6 +53,8 @@ $_SESSION['dealerhand'] = $dealer->hand;
 
 $_SESSION['playerscore'] = $player->score;
 $_SESSION['dealerscore'] = $dealer->score;
+
+$_SESSION['activeplayer'] = $active_player;
 
 ?>
 
