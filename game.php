@@ -12,8 +12,6 @@ $player->score = $_SESSION['playerscore'];
 $dealer->hand = $_SESSION['dealerhand'];
 $dealer->score = $_SESSION['dealerscore'];
 
-// $active_player = $_SESSION['activeplayer'];
-// $_SESSION['activeplayer'] = $active_player;
 echo $active_player;
 echo "<br>";
 
@@ -37,7 +35,6 @@ if(isset($_GET["hit"])){
 
 if (isset ($_GET["stand"])){
       echo "Player chose stand!";
-
     $active_player = 1; // start dealer turn
     $_SESSION['activeplayer'] = $active_player;
     echo $active_player;  
