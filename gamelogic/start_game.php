@@ -16,17 +16,15 @@ function start_game(){
   // createDeck();
 
   // Create the 2 player objects
-  $player = new Blackjack;
-  $dealer = new Blackjack;
-
+  
  
 
   //each player gets 2 cards
-  // $player->hit();
-  // $player->hit();
+  $player->hit();
+  $player->hit();
 
-  // $dealer->hit();
-  // $dealer->hit();
+  $dealer->hit();
+  $dealer->hit();
 
   // Set active player
 

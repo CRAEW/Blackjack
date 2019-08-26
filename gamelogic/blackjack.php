@@ -22,7 +22,7 @@ function action_btn() {
         print_r($player->hand);
         echo "Player totalscore 1: $player->totalscore";
         echo "<br>";
-        // echo "Dealer totalscore: $dealer->totalscore";
+        echo "Dealer totalscore: $dealer->totalscore";
     
       
     };
@@ -100,12 +100,5 @@ function add_score($person) {
     }
     // function endturn()
 }
-
- 
-
- 
-
-
-
 
 ?>
