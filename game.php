@@ -10,21 +10,19 @@
   </head>
   <body>
 
+  <h1>Black Jack</h1>
 
 
-  <form action="" method=" GET">
-    <input type="submit" value="Hit" name="hit">
-    <input type="submit" value="stand" name="stand">
-    <input type="submit" value="surrender" name="surrender">
-  </form>
-
-
-
-
-  <div>
+<section class="game">
+    <div>
     <h2>Dealer</h2>
 
     <?php 
+
+      foreach($_SESSION['dealerhand'] as $card) {
+        $card = "images/$card.png";
+        echo "<img src='$card' alt='$card'>";
+      }
 
         
 
@@ -36,7 +34,7 @@
         echo "Dealer totalscore: $dealer->totalscore";
         echo "<br>";
         echo "<br>";
-        $dealer->check_hand();
+        echo "$dealer->aces Aces found in hand!";
         echo "<br>";
   
     ?>
@@ -47,6 +45,11 @@
     <h2>Player</h2>
     <?php
 
+      foreach($_SESSION['playerhand'] as $card) {
+        $card = "images/$card.png";
+        echo "<img src='$card' alt='$card'>";
+      }
+
         print_r($_SESSION['playerhand']);
         echo "<br>";
         print_r($_SESSION['playerscore']);
@@ -56,11 +59,25 @@
         echo "<br>";
         echo "<br>";
         
-        $player->check_hand();
+        echo "$player->aces Aces found in hand!";
         echo "<br>";
       ?>
 
   </div>
+
+
+
+  <form action="" method=" GET">
+    <input type="submit" value="Hit" name="hit">
+    <input type="submit" value="stand" name="stand">
+    <input type="submit" value="surrender" name="surrender">
+  </form>
+
+
+
+
+</section>
+
 
   </body>
 

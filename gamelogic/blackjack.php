@@ -40,7 +40,6 @@ class Blackjack {
     public function add_score() {
     $this->score;
     $this->totalscore = 0;
-    // $this->aces;
 
         foreach($this->score as $score_value) {
             $this->totalscore += $score_value;
@@ -49,7 +48,7 @@ class Blackjack {
         $this->check_hand();
 
         //Set aces to value 1 if necessary
-        while (($this->totalscore > 21) and ($this->aces > 0)) {
+        while (($this->totalscore > 21) AND ($this->aces > 0)) {
                 $this->totalscore -= 10;
                 $this->aces--;
             }
@@ -67,7 +66,7 @@ class Blackjack {
                 $this->aces++;
             }
         }
-        echo "$this->aces Aces found in hand!";
+
     }
 
     public function stand() {

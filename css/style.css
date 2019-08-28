@@ -1,6 +1,10 @@
 body {
     background-color: #176e17;
     color: white;
+
+}
+
+.game {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
