@@ -31,7 +31,7 @@ foreach($suits as $suit) {
     foreach($cardvalues as $cardname => $cardvalue) {
 
         // This concatenates $suit-value and $cardname-key
-        $card = $suit . " " . $cardname;
+        $card = $suit . "-" . $cardname;
         // Add the created card-key and cardvalue to the deck-array
         $deck[$card] = $cardvalue;
     }

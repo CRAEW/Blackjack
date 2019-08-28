@@ -5,7 +5,6 @@ include 'gamelogic/blackjack.php';
 
 // The elves would appreciate a coffee! ;)
 
-
 // Create new players
 $player = new Blackjack();
 $dealer = new Blackjack();
@@ -67,5 +66,7 @@ $_SESSION['playerscore'] = $player->score;
 $_SESSION['dealerscore'] = $dealer->score;
 
 $_SESSION['activeplayer'] = $active_player;
+
+
 
 ?>

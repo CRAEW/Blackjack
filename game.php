@@ -35,6 +35,9 @@
 
         echo "Dealer totalscore: $dealer->totalscore";
         echo "<br>";
+        echo "<br>";
+        $dealer->check_hand();
+        echo "<br>";
   
     ?>
 
@@ -52,6 +55,9 @@
         echo "Player totalscore: $player->totalscore";
         echo "<br>";
         echo "<br>";
+        
+        $player->check_hand();
+        echo "<br>";
       ?>
 
   </div>
@@ -59,3 +65,5 @@
   </body>
 
 </html>
+
+

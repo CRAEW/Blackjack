@@ -14,6 +14,7 @@ class Blackjack {
     public $score = array();
     public $totalscore;
     public $hand = array();
+    public $aces;
     
     // Draw a card
     function hit() {
@@ -39,10 +40,34 @@ class Blackjack {
     public function add_score() {
     $this->score;
     $this->totalscore = 0;
+    // $this->aces;
 
         foreach($this->score as $score_value) {
             $this->totalscore += $score_value;
+        };
+
+        $this->check_hand();
+
+        //Set aces to value 1 if necessary
+        while (($this->totalscore > 21) and ($this->aces > 0)) {
+                $this->totalscore -= 10;
+                $this->aces--;
+            }
+
+    }
+
+
+    public function check_hand() {
+        // Check hand for ACES
+        $this->hand;
+        $this->aces = 0;
+
+        foreach($this->hand as $card) {
+            if(strpos($card, 'A') !== false) {
+                $this->aces++;
+            }
         }
+        echo "$this->aces Aces found in hand!";
     }
 
     public function stand() {
@@ -68,16 +93,6 @@ function start_game(){
   global $player;
   global $dealer;
 
-
-  // reset all scores and create new deck
-  
-  // reset();
-  // createDeck();
-
-  // Create the 2 player objects
-  
- 
-
   //each player gets 2 cards
   $player->hit();
   $player->hit();
@@ -87,15 +102,6 @@ function start_game(){
 
   // Check if dealer has 21
   check_winner($dealer);
-
-  // Set active player
-
-  // Activates buttons
-  //action_btn();
-
-
-  //TODO: extra cards dealer are invisible
-
 }
 
 function check_winner($person) {
