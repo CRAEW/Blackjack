@@ -24,19 +24,9 @@
         echo "<img src='$card' alt='$card'>";
       }
 
-        
-
-        print_r($_SESSION['dealerhand']);
-        echo "<br>";
-        print_r($_SESSION['dealerscore']);
-        echo "<br>";
-
+        echo "<p>";
         echo "Dealer totalscore: $dealer->totalscore";
-        echo "<br>";
-        echo "<br>";
-        echo "$dealer->aces Aces found in hand!";
-        echo "<br>";
-  
+        echo "</p>";
     ?>
 
   </div>
@@ -50,17 +40,9 @@
         echo "<img src='$card' alt='$card'>";
       }
 
-        print_r($_SESSION['playerhand']);
-        echo "<br>";
-        print_r($_SESSION['playerscore']);
-        echo "<br>";
-
+        echo "<p>";
         echo "Player totalscore: $player->totalscore";
-        echo "<br>";
-        echo "<br>";
-        
-        echo "$player->aces Aces found in hand!";
-        echo "<br>";
+        echo "</p>";
       ?>
 
   </div>

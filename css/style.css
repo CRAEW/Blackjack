@@ -10,6 +10,11 @@ body {
     flex-wrap: wrap;
 }
 
+img {
+    width: 100px;
+    height: auto;
+}
+
 form {
     width: 100%;
     display: flex;
@@ -32,17 +37,6 @@ input {
 
 }
 
-/* input {
-width: 200px;
-height: 30px;
-font-size: 20px;
-color: white;
-font-family: 'Acme', sans-serif;
-font-weight: lighter;
-background-color: #ba2d40;
-border-radius: 0.3rem;
-border: solid 1px black;
-} */
 
 div {
     border: 1px solid white;

@@ -104,19 +104,42 @@ function start_game(){
 }
 
 function check_winner($person) {
+    echo 'checking';
+    echo '<br>';
+
     global $player;
     global $dealer;
 
     $player->name = "Player";
     $dealer->name = "Dealer";
 
+    $x = $player->totalscore;
     $y = $dealer->totalscore;
 
-    // if dealer had 21, dealer wins
-    if($y === 21){
-        echo "dealer wins";
-    } elseif ($person->totalscore > 21){
-        echo "you're score is $person->totalscore. $person->name loses.";
+    switch ($s = $person->totalscore) {
+    case $s > 21:
+        echo "$person->name loses, his score was $person->totalscore .";
+        break;
+    case $s === 21:
+        if($y === 21){
+            echo "dealer wins";
+        } elseif ($x === 21 && $y === 21) {
+            echo "Dealer wins";
+        } else {
+            echo "$person->name wins, because his score was $person->totalscore .";
+        }
+        break;
+    case $s < 21:
+        if ($x < $y) {
+            echo "Dealer wins";
+        };
+        if ($x > $y) {
+            echo "Player wins";
+        };
+        if ($x = $y) {
+            echo "Dealer wins";
+        };
+        break;
     }
 }
 
