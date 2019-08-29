@@ -37,10 +37,10 @@ class Blackjack {
             $this->add_score();
 
             // check score for looser
-            if($this->totalscore > 21) {
-                echo "Player looses";
-                echo "<br>";
-            }
+            // if($this->totalscore > 21) {
+            //     echo "Player looses";
+            //     echo "<br>";
+            // }
             
         } else {
             echo "$this->name has 5 cards. Choose stand.";
@@ -89,7 +89,7 @@ class Blackjack {
 
         // $dealer->totalscore < 15 hit
         // $dealer->totalscore >= 17 checkwinner
-        while($this->totalscore < 17) {
+        while($this->totalscore < 16) {
             $this->hit();
         };
     }

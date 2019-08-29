@@ -28,6 +28,9 @@
         echo "<p>";
         echo "Dealer totalscore: $dealer->totalscore";
         echo "</p>";
+        echo "<p>";
+        echo "Dealer total wins: $dealer->wins";
+        echo "</p>";
     ?>
 
   </div>
@@ -43,6 +46,9 @@
 
         echo "<p>";
         echo "Player totalscore: $player->totalscore";
+        echo "</p>";
+        echo "<p>";
+        echo "Player total wins: $player->wins";
         echo "</p>";
       ?>
 

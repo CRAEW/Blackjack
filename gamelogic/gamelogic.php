@@ -13,9 +13,12 @@ $dealer = new Blackjack();
 // Put hand and score arrays into session
 $player->hand = $_SESSION['playerhand'];
 $player->score = $_SESSION['playerscore'];
+$payer->wins = $_SESSION['playerwins'];
 
 $dealer->hand = $_SESSION['dealerhand'];
 $dealer->score = $_SESSION['dealerscore'];
+$dealer->wins = $_SESSION['dealerwins'];
+
 
 // If array hand is empty then start game
 if((!isset($_SESSION['playerhand'])) AND (!isset($_SESSION['dealerhand']))){
@@ -43,10 +46,10 @@ if(isset($_GET["hit"])){
      // Check if player has > 21
     $x = $player->totalscore;
     if($x > 21){
-      echo "Player looses";
-      echo "<br>";
+      check_winner($player);
     } else {
       $player->hit();
+      check_winner($player);
     }
   }
 }
@@ -57,13 +60,17 @@ if (isset($_GET["stand"])) {
     $active_player = 1; // start dealer turn
     $_SESSION['activeplayer'] = $active_player;
 
-    // Dealers gets hit after stand is clicked
-    $dealer->stand();
-
-    // Check winner
-    echo 'checking';
-    echo '<br>';
-    check_winner($player);
+    $x = $player->totalscore;
+    if(($x > 21) OR ($x === 21)){
+      check_winner($player);
+    } else {
+      // Dealers gets hit after stand is clicked
+      $dealer->stand();
+      // Check winner
+      echo 'checking';
+      echo '<br>';
+      check_winner($player);
+    }
 }
 
 // Reset session and scores when SURRENDER btn is clicked
@@ -74,10 +81,12 @@ if (isset($_GET["surrender"])){
 
 // Store the current session values in the hand and score
 $_SESSION['playerhand'] = $player->hand;
-$_SESSION['dealerhand'] = $dealer->hand;
-
 $_SESSION['playerscore'] = $player->score;
+$_SESSION['playerwins'] = $player->wins;
+
+$_SESSION['dealerhand'] = $dealer->hand;
 $_SESSION['dealerscore'] = $dealer->score;
+$_SESSION['dealerwins'] = $dealer->wins;
 
 $_SESSION['activeplayer'] = $active_player;
 
