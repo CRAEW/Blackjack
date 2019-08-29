@@ -7,10 +7,13 @@ $game_log = []; // array with game-log
 // 1 = dealer
 $active_player = 0;
 
+$playerwins = 0;
+$dealerwins = 0;
+
 
 // Constructor to create the players
 class Blackjack {
-    public $wins;
+
     public $score = array();
     public $totalscore;
     public $hand = array();
@@ -36,18 +39,10 @@ class Blackjack {
             // adds the score to player totalscore
             $this->add_score();
 
-            // check score for looser
-            // if($this->totalscore > 21) {
-            //     echo "Player looses";
-            //     echo "<br>";
-            // }
-            
         } else {
             echo "$this->name has 5 cards. Choose stand.";
             echo "<br>";
         }
-
-
     }
 
     // function to add the score to the players totalscore
@@ -96,7 +91,7 @@ class Blackjack {
 
     public function surrender() {
         echo "whoops I lost";
-        new_game();
+         
     }
 
 }
@@ -115,9 +110,35 @@ function start_game(){
   $dealer->hit();
 }
 
-function check_winner($person) {
+function check_loser() {
     global $player;
     global $dealer;
+    global $dealerwins;
+    global $playerwins;
+
+    $x = $player->totalscore;
+    $y = $dealer->totalscore;
+
+    switch ($x) {
+        case $x > 21:
+            echo "Player loses. Dealer wins.";
+            echo "<br>";
+            $dealerwins = 1;
+            break;
+        case $x == 21:
+            $dealer->stand();
+            echo 'checking';
+            echo '<br>';
+            check_winner();
+            break;
+    }
+}
+
+function check_winner() {
+    global $player;
+    global $dealer;
+    global $dealerwins;
+    global $playerwins;
 
     $player->name = "Player";
     $dealer->name = "Dealer";
@@ -125,67 +146,73 @@ function check_winner($person) {
     $x = $player->totalscore;
     $y = $dealer->totalscore;
 
-    switch ($s = $person->totalscore) {
-    case $s > 21:
-        echo "$person->name loses, his score was $person->totalscore .";
-        echo "<br>";
+    switch ($x) {
+    case $x > 21:
+        if($x > 21 && $y > 21) {
+            echo "Both Player and Dealer lose.";
+            echo "<br>";
+        } elseif($x > 21 && $y <= 21) {
+            echo "Player loses. Dealer wins.";
+            echo "<br>";
+
+            $dealerwins = 1;
+        }
         break;
-    case $s === 21:
+    case $x === 21:
         if($y === 21){
             echo "dealer wins";
             echo "<br>";
             echo "player loses";
             echo "<br>";
+
+            $dealerwins = 1;
+
         } elseif ($x === 21 && $y === 21) {
             echo "Dealer wins";
             echo "<br>";
             echo "player loses";
             echo "<br>";
+
+            $dealerwins = 1;
+
         } else {
-            echo "$person->name wins, because his score was $person->totalscore .";
+            echo "Player wins, because his score was $player->totalscore .";
             echo "<br>";
+
+            $playerwins = 1;
+
         }
         break;
-    case $s < 21:
+    case $x < 21:
         if ($x < $y) {
             echo "Dealer wins";
             echo "<br>";
             echo "player loses";
             echo "<br>";
+
+            $dealerwins = 1;
+
         };
         if ($x > $y) {
             echo "Player wins";
             echo "<br>";
             echo "dealer loses";
             echo "<br>";
+
+            $playerwins = 1;
+
         };
         if ($x === $y) {
             echo "Dealer wins";
             echo "<br>";
             echo "player loses";
             echo "<br>";
+
+            $dealerwins = 1;
+
         };
         break;
     }
 }
-
-
-    
-
-// Set all back to default
-function new_game() {
-
-}
-
-// Reset $player_score and $dealer_score to 0
-function new_round() {
-
-}
-
-function reset_scores() {
-
-}
-
-
 
 ?>

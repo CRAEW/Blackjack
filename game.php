@@ -28,9 +28,7 @@
         echo "<p>";
         echo "Dealer totalscore: $dealer->totalscore";
         echo "</p>";
-        echo "<p>";
-        echo "Dealer total wins: $dealer->wins";
-        echo "</p>";
+   
     ?>
 
   </div>
@@ -47,9 +45,7 @@
         echo "<p>";
         echo "Player totalscore: $player->totalscore";
         echo "</p>";
-        echo "<p>";
-        echo "Player total wins: $player->wins";
-        echo "</p>";
+
       ?>
 
   </div>
@@ -58,8 +54,9 @@
 
   <form action="" method=" GET">
     <input type="submit" value="Hit" name="hit">
-    <input type="submit" value="stand" name="stand">
-    <input type="submit" value="surrender" name="surrender">
+    <input type="submit" value="Stand" name="stand">
+    <input type="submit" value="Surrender" name="surrender">
+    <input type="submit" value="New Game" name="newgame">
   </form>
 
 
