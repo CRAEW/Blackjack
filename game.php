@@ -10,10 +10,11 @@
   </head>
   <body>
 
-  <h1>Black Jack</h1>
+  
 
 
 <section class="game">
+  <h1>Black Jack</h1>
     <div>
     <h2>Dealer</h2>
 

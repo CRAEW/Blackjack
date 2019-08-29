@@ -20,6 +20,12 @@ $dealer->score = $_SESSION['dealerscore'];
 // If array hand is empty then start game
 if((!isset($_SESSION['playerhand'])) AND (!isset($_SESSION['dealerhand']))){
   start_game();
+
+  // Check if dealer has 21
+  $y = $dealer->totalscore;
+  if($y === 21){
+    echo "dealer wins";
+  }
 };
 
 // Makes the sum of the score-values
@@ -34,14 +40,20 @@ if(isset($_GET["hit"])){
 
   // Checks active player
   if($active_player === 0){
-    $player->hit();
-    check_winner($player);
-  };
-};
+     // Check if player has > 21
+    $x = $player->totalscore;
+    if($x > 21){
+      echo "Player looses";
+      echo "<br>";
+    } else {
+      $player->hit();
+    }
+  }
+}
 
 
 // Turn goes to Dealer when STAND btn is clicked
-if (isset ($_GET["stand"])){
+if (isset($_GET["stand"])) {
     $active_player = 1; // start dealer turn
     $_SESSION['activeplayer'] = $active_player;
 
@@ -49,8 +61,10 @@ if (isset ($_GET["stand"])){
     $dealer->stand();
 
     // Check winner
-    check_winner($dealer);
-};
+    echo 'checking';
+    echo '<br>';
+    check_winner($player);
+}
 
 // Reset session and scores when SURRENDER btn is clicked
 if (isset($_GET["surrender"])){

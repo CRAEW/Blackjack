@@ -20,20 +20,34 @@ class Blackjack {
     function hit() {
         // echo "new cards please";
         global $deck;
-        
-        // pick a random value out of the array $deck
-        global $rand_card;
-        $rand_card = array_rand($deck); // Pulls a random card
-        $rand_value =  $deck[$rand_card]; // Gives the value
 
-        // push card into hand array player
-        $this->hand[] = $rand_card;
+        if(count($this->hand) !== 5) {
+            // pick a random value out of the array $deck
+            global $rand_card;
+            $rand_card = array_rand($deck); // Pulls a random card
+            $rand_value =  $deck[$rand_card]; // Gives the value
 
-        // push value card into score array player
-        $this->score[] = $rand_value;
+            // push card into hand array player
+            $this->hand[] = $rand_card;
 
-        // adds the score to player totalscore
-        $this->add_score();
+            // push value card into score array player
+            $this->score[] = $rand_value;
+
+            // adds the score to player totalscore
+            $this->add_score();
+
+            // check score for looser
+            if($this->totalscore > 21) {
+                echo "Player looses";
+                echo "<br>";
+            }
+            
+        } else {
+            echo "$this->name has 5 cards. Choose stand.";
+            echo "<br>";
+        }
+
+
     }
 
     // function to add the score to the players totalscore
@@ -70,7 +84,8 @@ class Blackjack {
     }
 
     public function stand() {
-        echo "no card for me, I skip this one";
+        echo "Player choose stand.";
+        echo "<br>";
 
         // $dealer->totalscore < 15 hit
         // $dealer->totalscore >= 17 checkwinner
@@ -98,15 +113,9 @@ function start_game(){
 
   $dealer->hit();
   $dealer->hit();
-
-  // Check if dealer has 21
-  check_winner($dealer);
 }
 
 function check_winner($person) {
-    echo 'checking';
-    echo '<br>';
-
     global $player;
     global $dealer;
 
@@ -119,25 +128,42 @@ function check_winner($person) {
     switch ($s = $person->totalscore) {
     case $s > 21:
         echo "$person->name loses, his score was $person->totalscore .";
+        echo "<br>";
         break;
     case $s === 21:
         if($y === 21){
             echo "dealer wins";
+            echo "<br>";
+            echo "player loses";
+            echo "<br>";
         } elseif ($x === 21 && $y === 21) {
             echo "Dealer wins";
+            echo "<br>";
+            echo "player loses";
+            echo "<br>";
         } else {
             echo "$person->name wins, because his score was $person->totalscore .";
+            echo "<br>";
         }
         break;
     case $s < 21:
         if ($x < $y) {
             echo "Dealer wins";
+            echo "<br>";
+            echo "player loses";
+            echo "<br>";
         };
         if ($x > $y) {
             echo "Player wins";
+            echo "<br>";
+            echo "dealer loses";
+            echo "<br>";
         };
-        if ($x = $y) {
+        if ($x === $y) {
             echo "Dealer wins";
+            echo "<br>";
+            echo "player loses";
+            echo "<br>";
         };
         break;
     }
